@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { thisExpression } from "@babel/types";
 
-function UpdateMovie() {
+function UpdateMovie(props) {
   const [movieUpdate, setMovieUpdate] = useState({
     id: null,
     title: "",
     director: "",
-    metascore: null,
+    metascore: "",
     stars: []
   });
 
@@ -39,8 +38,9 @@ function UpdateMovie() {
         props.history.push("/movies");
       })
       .catch(err => {
-        console.log(err);
+        console.log("edit error", err);
       });
+    setMovieUpdate({ title: "", director: "", metascore: "" });
   };
 
   return (
