@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -32,6 +33,8 @@ export default class Movie extends React.Component {
   };
 
   render() {
+    console.log("Movie state", this.state.movie);
+    console.log("Movie props", this.props);
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
     }

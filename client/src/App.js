@@ -11,6 +11,8 @@ const App = () => {
     setSavedList([...savedList, movie]);
   };
 
+  console.log("App savedList state", savedList);
+
   return (
     <>
       <SavedList list={savedList} />
