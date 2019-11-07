@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { importDefaultSpecifier } from "@babel/types";
 
 function UpdateMovie(props) {
   const [movieUpdate, setMovieUpdate] = useState({
-    id: null,
+    id: 0,
     title: "",
     director: "",
-    metascore: "",
+    metascore: 0,
     stars: []
   });
 
@@ -32,17 +33,18 @@ function UpdateMovie(props) {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:5000/api/movies/${movieUpdate.id}, movieUpdate `)
+      .put(`http://localhost:5000/api/movies/${movieUpdate.id}`, movieUpdate)
       .then(res => {
         console.log(res);
-        props.history.push("/movies");
+        props.history.push("/");
       })
       .catch(err => {
         console.log("edit error", err);
       });
-    setMovieUpdate({ title: "", director: "", metascore: "" });
+    setMovieUpdate({ title: "", director: "", metascore: "", stars: [] });
   };
 
+  console.log("Update", movieUpdate);
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -60,10 +62,17 @@ function UpdateMovie(props) {
         onChange={handleChange}
       />
       <input
-        type="text"
+        type="number"
         name="metascore"
         placeholder="metascore"
         value={movieUpdate.metascore}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="stars"
+        placeholder="stars"
+        value={movieUpdate.stars}
         onChange={handleChange}
       />
       <button type="submit">Submit</button>
