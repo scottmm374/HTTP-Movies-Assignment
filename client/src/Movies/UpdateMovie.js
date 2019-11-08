@@ -29,9 +29,10 @@ function UpdateMovie(props) {
   };
 
   const changeStars = e => {
+    const value = e.target.value;
     setMovieUpdate({
       ...movieUpdate,
-      stars: [e.target.value]
+      stars: value.split(",")
     });
   };
 
