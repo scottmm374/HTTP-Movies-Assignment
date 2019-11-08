@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { importDefaultSpecifier } from "@babel/types";
 
 function UpdateMovie(props) {
   const [movieUpdate, setMovieUpdate] = useState({
@@ -26,6 +25,13 @@ function UpdateMovie(props) {
     setMovieUpdate({
       ...movieUpdate,
       [e.target.name]: e.target.value
+    });
+  };
+
+  const changeStars = e => {
+    setMovieUpdate({
+      ...movieUpdate,
+      stars: [e.target.value]
     });
   };
 
@@ -73,7 +79,7 @@ function UpdateMovie(props) {
         name="stars"
         placeholder="stars"
         value={movieUpdate.stars}
-        onChange={handleChange}
+        onChange={changeStars}
       />
       <button type="submit">Submit</button>
     </form>
