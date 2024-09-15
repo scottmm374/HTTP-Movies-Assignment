@@ -18,6 +18,8 @@ export default class MovieList extends Component {
   }
 
   render() {
+    console.log("MovieList state", this.state.movies);
+    console.log("MovieList props", this.props);
     return (
       <div className="movie-list">
         {this.state.movies.map(movie => (
@@ -27,6 +29,8 @@ export default class MovieList extends Component {
     );
   }
 }
+
+// handeling routing to specific Movie matching Id of the one clicked.
 
 function MovieDetails({ movie }) {
   return (
